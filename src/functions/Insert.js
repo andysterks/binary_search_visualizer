@@ -18,6 +18,7 @@ export default function Insert(newNode, existingNode) {
       if (existingNode.isRoot()) {
         if (existingNode.left.value === newNode.value || existingNode.right.value === newNode.value) { 
           console.log("duplicate");
+          return existingNode;
         }
         existingNode.addRight(newNode);
         return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
