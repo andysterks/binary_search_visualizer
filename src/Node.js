@@ -19,8 +19,8 @@ export default class Node {
   }
 
   addLeft(node) {
-    node.parent = this;
     this.left = node;
+    node.parent = this;
   }
 
   addRight(node) {
