@@ -3,7 +3,7 @@ import Node from "../Node"
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
     if (existingNode.isRoot()) {
-      if (existingNode.left.value === newNode.value || existingNode.right.value === newNode.value) { 
+      if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
         console.log("duplicate");
         return existingNode;
       }
@@ -20,7 +20,7 @@ export default function Insert(newNode, existingNode) {
   } else {
     if (existingNode.right === null) {
       if (existingNode.isRoot()) {
-        if (existingNode.left.value === newNode.value || existingNode.right.value === newNode.value) { 
+        if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
           console.log("duplicate");
           return existingNode;
         }
