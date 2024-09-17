@@ -5,7 +5,7 @@ import  Node  from './Node'
 import Insert from './functions/Insert'
 
 function App() {
-  const [rootNode, setRootNode] = useState(new Node(1, new Node(2), new Node(3)))
+  const [rootNode, setRootNode] = useState(new Node(2, new Node(1), new Node(3)))
   const svgRef = useRef()
 
   const updateTree = () => {
