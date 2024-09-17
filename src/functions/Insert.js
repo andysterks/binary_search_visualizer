@@ -1,3 +1,5 @@
+import Node from "../Node"
+
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
     if (!existingNode.left) {
