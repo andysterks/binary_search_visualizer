@@ -8,7 +8,7 @@ function App() {
   const [rootNode, setRootNode] = useState(new Node(1))
   const svgRef = useRef()
 
-  useEffect(() => {
+  const updateTree = () => {
     const svg = d3.select(svgRef.current)
     const width = 400
     const height = 300
@@ -53,8 +53,11 @@ function App() {
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
       .text(d => d.data.value)
+  }
 
-  }, [])
+  useEffect(() => {
+    updateTree()
+  }, [rootNode])
 
   const handleSubmit = (e) => {
     e.preventDefault()
