@@ -56,13 +56,17 @@ function App() {
       .attr('dy', '0.31em')
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
-      .text(d => d.data.name)
+      .text(d => d.data.value)
 
   }, [])
 
   return (
     <div className="App">
       <h1>D3.js Tree Visualization</h1>
+      <form>
+        <input type="number" placeholder="Enter a number" />
+        <button type="submit">Insert</button>
+      </form>
       <svg ref={svgRef} width="400" height="300"></svg>
     </div>
   )
