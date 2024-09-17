@@ -8,7 +8,7 @@ export default function Insert(newNode, existingNode) {
         return existingNode;
       }
       existingNode.addLeft(newNode);
-      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+      return existingNode;
     }
     if (existingNode.left === null) {
       if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
@@ -17,7 +17,7 @@ export default function Insert(newNode, existingNode) {
       }
       
       existingNode.addLeft(newNode);
-      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+      return existingNode;
     } else {
       //return new Node(existingNode.value, Insert(newNode, existingNode.left), existingNode.right, existingNode.parent);
       return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
@@ -58,7 +58,7 @@ export default function Insert(newNode, existingNode) {
       }
 
       existingNode.addRight(newNode);
-      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+      return existingNode;
     } else {
       //return new Node(existingNode.value, existingNode.left, Insert(newNode, existingNode.right));
       return InsertDuplicateRight(existingNode, Insert(newNode, existingNode.right));
