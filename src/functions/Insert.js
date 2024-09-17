@@ -1,5 +1,5 @@
 export default function Insert(node, value) {
-  if (node < value) {
+  if (node.value < value) {
     if (node.left === null) {
       node.left = new Node(value)
       return node
