@@ -32,7 +32,6 @@ export default function Insert(newNode, existingNode) {
       return existingNode;
     }
     if (existingNode.right === null) {
-
       if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
         console.log("duplicate");
         return existingNode;
