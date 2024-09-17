@@ -4,14 +4,14 @@ export default function Insert(newNode, existingNode) {
       newNode.left = new Node(value)
       return newNode
     } else {
-      return Insert(newNode.left, value)
+      return Insert(newNode, existingNode.left)
     }
   } else {
     if (!existingNode.right) {
       existingNode.right = new Node(value)
       return newNode
     } else {
-      return Insert(newNode.right, value)
+      return Insert(newNode, existingNode.right)
     }
   }
 }
