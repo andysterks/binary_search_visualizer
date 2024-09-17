@@ -4,7 +4,7 @@ export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
     if (existingNode.isRoot()) {
       existingNode.addLeft(newNode);
-      return existingNode;
+      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     }
     if (existingNode.left === null) {
       var newLeftNode = new Node(newNode.value, null, null, existingNode);
