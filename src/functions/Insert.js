@@ -17,7 +17,7 @@ export default function Insert(newNode, existingNode) {
     if (existingNode.right === null) {
       if (existingNode.isRoot()) {
         existingNode.addRight(newNode);
-        return existingNode;
+        return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
       }
       if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
         if (newNode.value > existingNode.value) {
