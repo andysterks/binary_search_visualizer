@@ -17,7 +17,7 @@ function App() {
 
     // Create a hierarchical data structure
     const data = {
-      nodes: new Node(1)
+      children: new Node(1)
     }
 
     // Create a tree layout
@@ -56,7 +56,7 @@ function App() {
       .attr('dy', '0.31em')
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
-      .text(d => d.data.value)
+      .text(d => d.data.children.value)
 
   }, [])
 
