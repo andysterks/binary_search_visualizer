@@ -77,7 +77,7 @@ function App() {
     e.preventDefault()
     const value = Number(e.target.elements[0].value)
     var updatedRootNode = Insert(new Node(value), rootNode)
-    setRootNode(Object.assign({}, updatedRootNode))
+    setRootNode(updatedRootNode)
   }
 
   return (
