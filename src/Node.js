@@ -19,10 +19,12 @@ export default class Node {
   }
 
   addLeft(node) {
-    this.left = new Node(node.value, node.left, node.right, this);    
+    node.parent = this;
+    this.left = node;
   }
 
   addRight(node) {
-    this.right = new Node(node.value, node.left, node.right, this);
+    node.parent = this;
+    this.right = node;
   }
 }
