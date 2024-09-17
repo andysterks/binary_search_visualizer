@@ -5,9 +5,7 @@ import  Node  from './Node'
 import Insert from './functions/Insert'
 
 function App() {
-  const [tree, setTree] = useState({
-    children: new Node(1)
-  })
+  const [rootNode, setRootNode] = useState(new Node(1))
   const svgRef = useRef()
 
   useEffect(() => {
@@ -22,7 +20,7 @@ function App() {
     const treeLayout = d3.tree().size([width, height - 40])
 
     // Create a hierarchy from the data
-    const root = d3.hierarchy(tree)
+    const root = d3.hierarchy(rootNode)
 
     // Assign x and y positions to each node
     treeLayout(root)
@@ -61,8 +59,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const value = Number(e.target.elements[0].value)
-    var updatedTree = Insert(new Node(value), value)
-    setTree(updatedTree)
+    var updatedTree = Insert(new Node(value), rootNode)
+    setRootNode(updatedTree)
   }
 
   return (
