@@ -26,7 +26,12 @@ export default class Node {
 
   addRight(node) {
     this.right = node;
-    node.parent = this;
+    node.assignParent(this);
+    return this;
+  }
+
+  assignParent(node) {
+    this.parent = node;
     return this;
   }
 }
