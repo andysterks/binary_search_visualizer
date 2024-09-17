@@ -15,12 +15,10 @@ export default class Node {
   }
 
   addLeft(node) {
-    this.left = node;
-    node.parent = this;
+    this.left = new Node(node.value, node.left, node.right, this);    
   }
 
   addRight(node) {
-    this.right = node;
-    node.parent = this;
+    this.right = new Node(node.value, node.left, node.right, this);
   }
 }
