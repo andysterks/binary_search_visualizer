@@ -11,8 +11,8 @@ export default function Insert(newNode, existingNode) {
       return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     }
     if (existingNode.left === null) {
-      var newLeftNode = new Node(newNode.value, null, null, existingNode);
-      return new Node(existingNode.value, newLeftNode, existingNode.right, existingNode.parent);
+      existingNode.addLeft(newNode);
+      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     } else {
       //return new Node(existingNode.value, Insert(newNode, existingNode.left), existingNode.right, existingNode.parent);
       return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
