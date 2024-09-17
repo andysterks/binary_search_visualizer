@@ -16,11 +16,25 @@ function App() {
     // Clear any existing content
     svg.selectAll("*").remove()
 
+    // Helper function to convert our Node structure to D3 hierarchy
+    const convertToD3Hierarchy = (node) => {
+      return {
+        name: node.value,
+        children: [
+          node.left && convertToD3Hierarchy(node.left),
+          node.right && convertToD3Hierarchy(node.right)
+        ].filter(Boolean)
+      }
+    }
+
+    // Convert our rootNode to D3 hierarchy
+    const d3Data = convertToD3Hierarchy(rootNode)
+
     // Create a tree layout
     const treeLayout = d3.tree().size([width, height - 40])
 
-    // Create a hierarchy from the data
-    const root = d3.hierarchy(rootNode)
+    // Create a hierarchy from the converted data
+    const root = d3.hierarchy(d3Data)
 
     // Assign x and y positions to each node
     treeLayout(root)
@@ -52,7 +66,7 @@ function App() {
       .attr('dy', '0.31em')
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
-      .text(d => d.data.value)
+      .text(d => d.data.name)
   }
 
   useEffect(() => {
