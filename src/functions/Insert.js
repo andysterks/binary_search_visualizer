@@ -21,19 +21,8 @@ export default function Insert(newNode, existingNode) {
             existingNode.parent.parent
           );
 
-          newParent.left = new Node(
-            existingNode.parent.value,
-            null,
-            null,
-            newParent
-          );
-
-          newParent.right = new Node(
-            newNode.value,
-            null,
-            null,
-            newParent
-          );
+          newParent.addLeft(existingNode.parent);
+          newParent.addRight(newNode);
 
           return newParent;
         } else {
