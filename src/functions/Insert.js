@@ -28,8 +28,8 @@ export default function Insert(newNode, existingNode) {
         console.log("duplicate");
         return existingNode;
       }
-      existingNode.addRight(newNode);
-      return existingNode;
+      
+      return AddRight(existingNode, newNode);
     }
     if (existingNode.right === null) {
       if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
@@ -71,4 +71,9 @@ function InsertDuplicateLeft(existingNode, newNode) {
 
 function InsertDuplicateRight(existingNode, newNode) {
   return new Node(existingNode.value, existingNode.left, newNode, existingNode.parent);
+}
+
+function AddRight(existingNode, newNode) {
+  existingNode.addRight(newNode);
+  return existingNode;
 }
