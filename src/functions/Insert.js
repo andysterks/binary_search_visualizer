@@ -3,6 +3,10 @@ import Node from "../Node"
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
     if (existingNode.isRoot()) {
+      if (existingNode.left.value === newNode.value || existingNode.right.value === newNode.value) { 
+        console.log("duplicate");
+        return existingNode;
+      }
       existingNode.addLeft(newNode);
       return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     }
