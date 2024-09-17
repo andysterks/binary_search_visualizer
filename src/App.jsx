@@ -60,7 +60,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const value = e.target.elements[0].value
+    const value = Number(e.target.elements[0].value)
     var updatedTree = Insert(new Node(value), value)
     setTree(updatedTree)
   }
