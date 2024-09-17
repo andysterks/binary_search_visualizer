@@ -11,6 +11,11 @@ export default function Insert(newNode, existingNode) {
       return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     }
     if (existingNode.left === null) {
+      if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
+        console.log("duplicate");
+        return existingNode;
+      }
+      
       existingNode.addLeft(newNode);
       return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
     } else {
