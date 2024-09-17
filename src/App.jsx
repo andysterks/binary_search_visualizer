@@ -61,8 +61,8 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const value = e.target.elements[0].value
-    Insert(tree, value)
-    setTree(tree)
+    var updatedTree = Insert(tree, value)
+    setTree(updatedTree)
   }
 
   return (

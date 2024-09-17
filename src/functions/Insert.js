@@ -2,14 +2,16 @@ export default function Insert(node, value) {
   if (node < value) {
     if (node.left === null) {
       node.left = new Node(value)
+      return node
     } else {
-      Insert(node.left, value)
+      return Insert(node.left, value)
     }
   } else {
     if (node.right === null) {
       node.right = new Node(value)
+      return node
     } else {
-      Insert(node.right, value)
+      return Insert(node.right, value)
     }
   }
 }
