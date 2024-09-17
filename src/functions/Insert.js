@@ -15,3 +15,7 @@ export default function Insert(newNode, existingNode) {
     }
   }
 }
+
+function InsertDuplicateRight(existingNode, newNode) {
+  return new Node(existingNode.value, existingNode.left, new Node(newNode.value, null, null, existingNode), existingNode.parent);
+}
