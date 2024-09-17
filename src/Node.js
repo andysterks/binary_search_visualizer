@@ -24,7 +24,7 @@ export default class Node {
   }
 
   addRight(node) {
-    node.parent = this;
     this.right = node;
+    node.parent = this;
   }
 }
