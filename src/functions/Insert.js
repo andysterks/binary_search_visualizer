@@ -2,7 +2,7 @@ import Node from "../Node"
 
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
-    if (!existingNode.left) {
+    if (existingNode.left === null) {
       var newLeftNode = new Node(newNode.value, null, null, existingNode);
       return new Node(existingNode.value, newLeftNode, existingNode.right, existingNode.parent);
     } else {
@@ -10,7 +10,7 @@ export default function Insert(newNode, existingNode) {
       return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
     }
   } else {
-    if (!existingNode.right) {
+    if (existingNode.right === null) {
       var newRightNode = new Node(newNode.value, null, null, existingNode);
       return new Node(existingNode.value, existingNode.left, newRightNode, existingNode.parent);
     } else {

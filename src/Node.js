@@ -5,4 +5,8 @@ export default class Node {
     this.right = right;
     this.parent = parent;
   }
+
+  isLeaf() {
+    return this.left === null && this.right === null;
+  }
 }
