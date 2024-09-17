@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import './App.css'
+import  Node  from './Node'
 
 function App() {
   const svgRef = useRef()
@@ -15,11 +16,7 @@ function App() {
 
     // Create a hierarchical data structure
     const data = {
-      name: "Root",
-      children: [
-        { name: "1" },
-        { name: "2" }
-      ]
+      nodes: new Node(1)
     }
 
     // Create a tree layout
