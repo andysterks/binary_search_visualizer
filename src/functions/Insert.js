@@ -1,17 +1,17 @@
-export default function Insert(node, value) {
-  if (node.value < value) {
-    if (!node.left) {
-      node.left = new Node(value)
-      return node
+export default function Insert(newNode, existingNode) {
+  if (newNode.value < existingNode.value) {
+    if (!existingNode.left) {
+      newNode.left = new Node(value)
+      return newNode
     } else {
-      return Insert(node.left, value)
+      return Insert(newNode.left, value)
     }
   } else {
-    if (!node.right) {
-      node.right = new Node(value)
-      return node
+    if (!existingNode.right) {
+      existingNode.right = new Node(value)
+      return newNode
     } else {
-      return Insert(node.right, value)
+      return Insert(newNode.right, value)
     }
   }
 }
