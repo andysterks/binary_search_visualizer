@@ -11,6 +11,9 @@ export default function Insert(newNode, existingNode) {
     }
   } else {
     if (existingNode.right === null) {
+      if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
+
+      }
       var newRightNode = new Node(newNode.value, null, null, existingNode);
       return new Node(existingNode.value, existingNode.left, newRightNode, existingNode.parent);
     } else {
