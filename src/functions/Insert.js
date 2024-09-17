@@ -2,6 +2,10 @@ import Node from "../Node"
 
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
+    if (existingNode.isRoot()) {
+      existingNode.addLeft(newNode);
+      return existingNode;
+    }
     if (existingNode.left === null) {
       var newLeftNode = new Node(newNode.value, null, null, existingNode);
       return new Node(existingNode.value, newLeftNode, existingNode.right, existingNode.parent);
@@ -11,6 +15,10 @@ export default function Insert(newNode, existingNode) {
     }
   } else {
     if (existingNode.right === null) {
+      if (existingNode.isRoot()) {
+        existingNode.addRight(newNode);
+        return existingNode;
+      }
       if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
         if (newNode.value > existingNode.value) {
           // shove up existing node (5), set original parent to left (3), set new (7) to right

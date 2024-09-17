@@ -6,6 +6,10 @@ export default class Node {
     this.parent = parent;
   }
 
+  isRoot() {
+    return this.parent === null;
+  }
+
   isLeaf() {
     return this.left === null && this.right === null;
   }
