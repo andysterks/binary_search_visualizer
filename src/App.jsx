@@ -21,7 +21,7 @@ function App() {
     }
 
     // Create a tree layout
-    const treeLayout = d3.tree().size([width, height - 100])
+    const treeLayout = d3.tree().size([width, height - 40])
 
     // Create a hierarchy from the data
     const root = d3.hierarchy(data)
@@ -29,8 +29,12 @@ function App() {
     // Assign x and y positions to each node
     treeLayout(root)
 
+    // Create a group element to contain the entire tree
+    const g = svg.append("g")
+      .attr("transform", `translate(0, 20)`)
+
     // Create links
-    svg.selectAll('.link')
+    g.selectAll('.link')
       .data(root.links())
       .enter().append('path')
       .attr('class', 'link')
@@ -39,7 +43,7 @@ function App() {
         .y(d => d.y))
 
     // Create nodes
-    const node = svg.selectAll('.node')
+    const node = g.selectAll('.node')
       .data(root.descendants())
       .enter().append('g')
       .attr('class', 'node')
