@@ -18,15 +18,16 @@ export default function Insert(newNode, existingNode) {
       return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
     }
   } else {
-    if (existingNode.right === null) {
-      if (existingNode.isRoot()) {
-        if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
-          console.log("duplicate");
-          return existingNode;
-        }
-        existingNode.addRight(newNode);
-        return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+    if (existingNode.isRoot()) {
+      if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
+        console.log("duplicate");
+        return existingNode;
       }
+      existingNode.addRight(newNode);
+      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+    }
+    if (existingNode.right === null) {
+      
       // if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
       //   if (newNode.value > existingNode.value) {
       //     // shove up existing node (5), set original parent to left (3), set new (7) to right
