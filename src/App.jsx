@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import './App.css'
 import  Node  from './Node'
+import Insert from './functions/Insert'
 
 function App() {
   const svgRef = useRef()
