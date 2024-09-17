@@ -13,4 +13,14 @@ export default class Node {
   isUnary() {
     return this.left === null || this.right === null;
   }
+
+  addLeft(node) {
+    this.left = node;
+    node.parent = this;
+  }
+
+  addRight(node) {
+    this.right = node;
+    node.parent = this;
+  }
 }
