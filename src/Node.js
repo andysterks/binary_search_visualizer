@@ -21,10 +21,12 @@ export default class Node {
   addLeft(node) {
     this.left = node;
     node.parent = this;
+    return this;
   }
 
   addRight(node) {
     this.right = node;
     node.parent = this;
+    return this;
   }
 }
