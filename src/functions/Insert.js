@@ -29,7 +29,7 @@ export default function Insert(newNode, existingNode) {
         return existingNode;
       }
       existingNode.addRight(newNode);
-      return new Node(existingNode.value, existingNode.left, existingNode.right, existingNode.parent);
+      return existingNode;
     }
     if (existingNode.right === null) {
 
