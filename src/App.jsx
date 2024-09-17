@@ -1,10 +1,13 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as d3 from 'd3'
 import './App.css'
 import  Node  from './Node'
 import Insert from './functions/Insert'
 
 function App() {
+  const [tree, setTree] = useState({
+    children: new Node(1)
+  })
   const svgRef = useRef()
 
   useEffect(() => {
@@ -15,16 +18,11 @@ function App() {
     // Clear any existing content
     svg.selectAll("*").remove()
 
-    // Create a hierarchical data structure
-    const data = {
-      children: new Node(1)
-    }
-
     // Create a tree layout
     const treeLayout = d3.tree().size([width, height - 40])
 
     // Create a hierarchy from the data
-    const root = d3.hierarchy(data)
+    const root = d3.hierarchy(tree)
 
     // Assign x and y positions to each node
     treeLayout(root)
@@ -56,14 +54,21 @@ function App() {
       .attr('dy', '0.31em')
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
-      .text(d => d.data.children.value)
+      .text(d => d.data.value)
 
   }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const value = e.target.elements[0].value
+    Insert(tree, value)
+    setTree(tree)
+  }
 
   return (
     <div className="App">
       <h1>D3.js Tree Visualization</h1>
-      <form>
+      <form onSubmit={handleSubmit}> 
         <input type="number" placeholder="Enter a number" />
         <button type="submit">Insert</button>
       </form>
