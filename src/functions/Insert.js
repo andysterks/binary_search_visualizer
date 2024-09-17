@@ -13,11 +13,29 @@ export default function Insert(newNode, existingNode) {
     if (existingNode.right === null) {
       if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
         if (newNode.value > existingNode.value) {
-          // shove up existing node, set parent to left node
-          InsertDuplicateLeft(
-            existingNode.parent,
-            new Node(existingNode.value, null, null, existingNode.parent)
-          )
+          // shove up existing node (5), set original parent to left (3), set new (7) to right
+          var newParent = new Node(
+            existingNode.value,
+            null,
+            null,
+            existingNode.parent.parent
+          );
+
+          newParent.left = new Node(
+            existingNode.parent.value,
+            null,
+            null,
+            newParent
+          );
+
+          newParent.right = new Node(
+            newNode.value,
+            null,
+            null,
+            newParent
+          );
+
+          return newParent;
         } else {
           // shove up existing node, set parent to right node
         }
