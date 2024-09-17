@@ -8,7 +8,7 @@ function App() {
   const [rootNode, setRootNode] = useState(new Node(2, new Node(1), new Node(3)))
   const svgRef = useRef()
 
-  const updateTree = () => {
+  const updateTree = (treeRootNode) => {
     const svg = d3.select(svgRef.current)
     const width = 400
     const height = 300
@@ -28,7 +28,7 @@ function App() {
     }
 
     // Convert our rootNode to D3 hierarchy
-    const d3Data = convertToD3Hierarchy(rootNode)
+    const d3Data = convertToD3Hierarchy(treeRootNode)
 
     // Create a tree layout
     const treeLayout = d3.tree().size([width, height - 40])
@@ -70,7 +70,7 @@ function App() {
   }
 
   useEffect(() => {
-    updateTree()
+    updateTree(rootNode)
   }, [rootNode])
 
   const handleSubmit = (e) => {
