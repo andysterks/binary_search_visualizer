@@ -53,8 +53,7 @@ export default function Insert(newNode, existingNode) {
             existingNode.parent.parent
           );
 
-          newParent.addLeft(existingNode.parent);
-          newParent.addRight(newNode);
+          AddLeft(newParent, existingNode.parent);
 
           return newParent;
         } else {
