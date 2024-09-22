@@ -78,7 +78,10 @@ function App() {
     const value = Number(e.target.elements[0].value)
     Insert(new Node(value), rootNode)
     // Force a re-render by creating a new object reference
-    setRootNode({...rootNode})
+    setRootNode(prevRootNode => {
+      const newRoot = Insert(new Node(value), prevRootNode);
+      return new Node(newRoot.value, newRoot.left, newRoot.right);
+    })
   }
 
   return (
