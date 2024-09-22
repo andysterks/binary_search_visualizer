@@ -11,18 +11,14 @@ export default function Insert(newNode, existingNode) {
         console.log("duplicate");
         return existingNode;
       }
-      return AddLeft(existingNode, newNode);
-    }
-    if (existingNode.left === null) {
-      if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
-        console.log("duplicate");
-        return existingNode;
-      }
       
-      return AddLeft(existingNode, newNode);
+      if (existingNode.left === null) {
+        return AddLeft(existingNode, newNode);
+      } else {
+        return Insert(newNode, existingNode.left);
+      }
     } else {
-      //return new Node(existingNode.value, Insert(newNode, existingNode.left), existingNode.right, existingNode.parent);
-      return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
+      debugger;
     }
   } else {
     if (IsRoot(existingNode)) {
