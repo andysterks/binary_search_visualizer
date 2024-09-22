@@ -76,7 +76,6 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const value = Number(e.target.elements[0].value)
-    Insert(new Node(value), rootNode)
     // Force a re-render by creating a new object reference
     setRootNode(prevRootNode => {
       const newRoot = Insert(new Node(value), prevRootNode);
