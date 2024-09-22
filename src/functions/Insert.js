@@ -1,9 +1,10 @@
 import Node from "../Node"
 import { AddLeft, AddRight } from "./AddNode"
+import { IsRoot } from "./IsRoot"
 
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
-    if (existingNode.isRoot()) {
+    if (IsRoot(existingNode)) {
       if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
         console.log("duplicate");
         return existingNode;
@@ -22,7 +23,7 @@ export default function Insert(newNode, existingNode) {
       return InsertDuplicateLeft(existingNode, Insert(newNode, existingNode.left));
     }
   } else {
-    if (existingNode.isRoot()) {
+    if (IsRoot(existingNode)) {
       if (existingNode.left?.value === newNode.value || existingNode.right?.value === newNode.value) { 
         console.log("duplicate");
         return existingNode;
