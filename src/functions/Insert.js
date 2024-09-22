@@ -1,6 +1,8 @@
 import Node from "../Node"
 import { AddLeft, AddRight } from "./AddNode"
 import { IsRoot } from "./IsRoot"
+import { IsLeaf } from "./IsLeaf"
+import { IsUnary } from "./IsUnary"
 
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
@@ -37,7 +39,7 @@ export default function Insert(newNode, existingNode) {
         return existingNode;
       }
 
-      if (existingNode.isLeaf() && existingNode.parent.isUnary()) {
+      if (IsLeaf(existingNode) && IsUnary(existingNode.parent)) {
         if (newNode.value > existingNode.value) {
           // shove up existing node (5), set original parent to left (3), set new (7) to right
           var newParent = new Node(
