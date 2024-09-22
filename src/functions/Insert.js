@@ -31,10 +31,10 @@ export default function Insert(newNode, existingNode) {
         return existingNode;
       }
 
-      if (existingNode.left == null || existingNode.right == null) {
+      if (existingNode.right == null) {
         return AddRight(existingNode, newNode);
       } else {
-        return Insert(existingNode, newNode);
+        return Insert(newNode, existingNode.right);
       }
     }
     if (existingNode.right === null) {
