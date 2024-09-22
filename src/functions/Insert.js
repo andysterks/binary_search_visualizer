@@ -1,4 +1,5 @@
 import Node from "../Node"
+import { AddLeft, AddRight } from "./AddNode"
 
 export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
@@ -68,14 +69,4 @@ function InsertDuplicateLeft(existingNode, newNode) {
 
 function InsertDuplicateRight(existingNode, newNode) {
   return new Node(existingNode.value, existingNode.left, newNode, existingNode.parent);
-}
-
-function AddLeft(existingNode, newNode) {
-  existingNode.addLeft(newNode);
-  return existingNode;
-}
-
-function AddRight(existingNode, newNode) {
-  existingNode.addRight(newNode);
-  return existingNode;
 }
