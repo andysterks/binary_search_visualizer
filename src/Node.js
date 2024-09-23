@@ -39,12 +39,8 @@ export default class Node {
   }
 
   get depth() {
-    var child = this.left || this.right || null;
-    var depth = 0;
-    while(child != null) {
-      depth++;
-      child = child?.left || child?.right || null;
-    }
-    return depth;
+    var leftHeight = this.left?.height || 0;
+    var rightHeight = this.right?.height || 0;
+    return leftHeight - rightHeight;
   }
 }
