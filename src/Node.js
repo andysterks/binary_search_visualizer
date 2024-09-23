@@ -30,7 +30,9 @@ export default class Node {
   
   get depth() {
     var parent = this.parent || null;
-    for (let depth = 0; parent != null; depth++) {
+    var depth = 0;
+    while(parent != null) {
+      depth++;
       parent = parent?.parent;
     }
     return depth;
