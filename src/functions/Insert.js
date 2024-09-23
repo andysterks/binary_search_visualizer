@@ -17,19 +17,12 @@ export default function Insert(newNode, existingNode) {
       existingNode.parent
     );
   } else if (newNode.value > existingNode.value) {
-    if (existingNode.parent && IsLeaf(existingNode) && IsUnary(existingNode.parent)) {
-      // shift everything
-      var left = new Node(existingNode.parent.value, null, null, existingNode);
-      var right = new Node(newNode.value, null, null, existingNode);
-      return new Node(existingNode.value, left, right, existingNode.parent);
-    } else {
-      return new Node(
-        existingNode.value,
-        existingNode.left,
-        Insert(newNode, existingNode.right),
-        existingNode.parent
-      );
-    }    
+    return new Node(
+      existingNode.value,
+      existingNode.left,
+      Insert(newNode, existingNode.right),
+      existingNode.parent
+    );  
   } else {
     // If the value is equal, you can choose to ignore it or handle duplicates
     return existingNode;
