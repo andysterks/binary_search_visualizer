@@ -29,29 +29,9 @@ export default class Node {
   } 
   
   get depth() {
-    var depth = 0;
-    var shouldContinue = true;
-    var currentNode = this;
-    while(shouldContinue) {
-      if (currentNode.left && currentNode.right) {
-        depth;
-      }
-
-      if (currentNode.left && !currentNode.right) {
-        depth++;
-        currentNode = currentNode.left;
-      }
-
-      if (!currentNode.left && currentNode.right) {
-        depth++;
-        currentNode = currentNode.right;
-      }
-
-      if (!currentNode.left && !currentNode.right) {
-        shouldContinue = false;
-      }
+    for (let depth = 0; this.parent != null; depth++) {
+      this = this.parent;
     }
-
     return depth;
   }
 }
