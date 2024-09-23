@@ -31,6 +31,6 @@ export default class Node {
   get depth() {
     var leftDepth = this.left ? this.left.depth : 0;
     var rightDepth = this.right ? this.right.depth : 0;
-    return 1 + (leftDepth - rightDepth);
+    return (leftDepth - rightDepth);
   }
 }
