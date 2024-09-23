@@ -29,8 +29,9 @@ export default class Node {
   } 
   
   get depth() {
-    for (let depth = 0; this.parent != null; depth++) {
-      this = this.parent;
+    var parent = this.parent || null;
+    for (let depth = 0; parent != null; depth++) {
+      parent = parent?.parent;
     }
     return depth;
   }
