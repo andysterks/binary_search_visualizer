@@ -29,7 +29,12 @@ export default class Node {
   } 
   
   get depth() {
-    var leftDepth = this.left ? this.left.depth : 0;
+    var depth = 0;
+    var currentNode = this;
+    while(currentNode.parent) {
+      depth++;
+      currentNode = currentNode.parent;
+    }
     var rightDepth = this.right ? this.right.depth : 0;
     return (leftDepth - rightDepth);
   }
