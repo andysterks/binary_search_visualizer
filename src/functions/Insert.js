@@ -18,6 +18,13 @@ export default function Insert(newNode, existingNode, existingParent) {
       existingNode.parent
     );
   } else if (newNode.value > existingNode.value) {
+    if (existingNode.parent && IsUnary(existingNode.parent) && IsLeaf(existingNode)) {
+      newNode.parent = existingNode.parent;
+      Insert(existingNode, newNode.left, newNode);
+      Insert(existingNode.right, newNode.right, newNode);
+      return newNode;
+    }
+
     return new Node(
       existingNode.value,
       existingNode.left,
