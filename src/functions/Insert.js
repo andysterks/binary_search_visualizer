@@ -4,7 +4,7 @@ import { IsRoot } from "./IsRoot"
 import { IsLeaf } from "./IsLeaf"
 import { IsUnary } from "./IsUnary"
 
-export default function Insert(newNode, existingNode) {
+export default function Insert(newNode, existingNode, existingParent) {
   if (!existingNode) {
     return newNode;
   }
@@ -12,7 +12,7 @@ export default function Insert(newNode, existingNode) {
   if (newNode.value < existingNode.value) {
     return new Node(
       existingNode.value,
-      Insert(newNode, existingNode.left),
+      Insert(newNode, existingNode.left, existingNode),
       existingNode.right,
       existingNode.parent
     );
@@ -20,7 +20,7 @@ export default function Insert(newNode, existingNode) {
     return new Node(
       existingNode.value,
       existingNode.left,
-      Insert(newNode, existingNode.right),
+      Insert(newNode, existingNode.right, existingNode),
       existingNode.parent
     );  
   } else {
