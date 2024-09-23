@@ -48,8 +48,12 @@ describe('Simple Insert functions', () => {
     expect(root.left).toBeNull();
     root = Insert(1, root);
     expect(root.value).toBe(2);
+    expect(root.right.value).toBe(3);
     expect(root.left.value).toBe(1);
-    root = Insert(4, root);
+    root = Insert(4, root);    
+    expect(root.value).toBe(2);
+    expect(root.right.value).toBe(3);
+    expect(root.left.value).toBe(1);
     root = Insert(5, root);
 
     expect(root.value).toBe(5);
