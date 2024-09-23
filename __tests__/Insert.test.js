@@ -1,5 +1,5 @@
-import Insert from '../Insert';
-import Node from '../../Node';
+import Insert from '../src/functions/Insert.js';
+import Node from '../src/Node.js';
 
 describe('Insert function', () => {
   test('should insert a new node into an empty tree', () => {
