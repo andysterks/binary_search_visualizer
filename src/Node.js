@@ -29,6 +29,8 @@ export default class Node {
   } 
   
   get depth() {
-    return ;
+    var leftDepth = this.left ? this.left.depth : 0;
+    var rightDepth = this.right ? this.right.depth : 0;
+    return 1 + Math.max(leftDepth, rightDepth);
   }
 }
