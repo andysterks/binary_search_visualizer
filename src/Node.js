@@ -34,7 +34,7 @@ export default class Node {
     var currentNode = this;
     while(shouldContinue) {
       if (currentNode.left && currentNode.right) {
-        depth++;
+        depth;
       }
 
       if (currentNode.left && !currentNode.right) {
