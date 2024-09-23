@@ -31,26 +31,27 @@ export default class Node {
   get depth() {
     var depth = 0;
     var shouldContinue = true;
+    var currentNode = this;
     while(shouldContinue) {
-      if (this.left && this.right) {
+      if (currentNode.left && currentNode.right) {
         depth++;
       }
 
-      if (this.left && !this.right) {
+      if (currentNode.left && !currentNode.right) {
         depth++;
-        this = this.left;
+        currentNode = currentNode.left;
       }
 
-      if (!this.left && this.right) {
+      if (!currentNode.left && currentNode.right) {
         depth++;
-        this = this.right;
+        currentNode = currentNode.right;
       }
 
-      if (!this.left && !this.right) {
+      if (!currentNode.left && !currentNode.right) {
         shouldContinue = false;
       }
     }
-    
-    return (leftDepth - rightDepth);
+
+    return depth;
   }
 }
