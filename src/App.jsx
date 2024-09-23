@@ -66,7 +66,7 @@ function App() {
       .attr('dy', '0.31em')
       .attr('x', d => d.children ? -12 : 12)
       .style('text-anchor', d => d.children ? 'end' : 'start')
-      .text(d => d.data.name)
+      .text(d => { return d.data.name })
   }
 
   useEffect(() => {
@@ -78,8 +78,9 @@ function App() {
     const value = Number(e.target.elements[0].value)
     // Force a re-render by creating a new object reference
     setRootNode(prevRootNode => {
-      const updatedTree = Insert(new Node(value), prevRootNode, null);
-      return new Node(updatedTree.value, updatedTree.left, updatedTree.right);
+      const updatedTree = Insert(value, prevRootNode, null);
+      console.log(updatedTree);
+      return updatedTree;
     })
   }
 

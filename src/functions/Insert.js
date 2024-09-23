@@ -4,33 +4,36 @@ import { IsRoot } from "./IsRoot"
 import { IsLeaf } from "./IsLeaf"
 import { IsUnary } from "./IsUnary"
 
-export default function Insert(newNode, existingNode, existingParent) {
+export default function Insert(newNodeValue, existingNode) {
   if (!existingNode) {
-    newNode.parent = existingParent;
-    return newNode;
+    return new Node(newNodeValue, null, null);
   }
 
-  if (newNode.value < existingNode.value) {
+  if (newNodeValue < existingNode.value) {
     return new Node(
-      existingNode.value,
-      Insert(newNode, existingNode.left, existingNode),
+      existingNode.value, 
+      Insert(newNodeValue, existingNode.left), 
       existingNode.right,
       existingNode.parent
     );
-  } else if (newNode.value > existingNode.value) {
-    if (existingNode.parent && IsUnary(existingNode.parent) && IsLeaf(existingNode)) {
-      newNode.parent = existingNode.parent;
-      Insert(existingNode, newNode.left, newNode);
-      Insert(existingNode.right, newNode.right, newNode);
-      return newNode;
+  } else if (newNodeValue > existingNode.value) {
+    if (existingNode.parent && IsUnary(existingNode.parent)) {
+      existingNode.parent.parent.setRight(
+        new Node(
+          existingNode.value,
+          new Node(existingNode.parent.value, null, null),
+          Insert(newNodeValue),
+          existingNode.parent.parent
+        )
+      )
+    } else {
+      return new Node(
+        existingNode.value, 
+        existingNode.left,
+        Insert(newNodeValue, existingNode.right),
+        existingNode.parent
+      );
     }
-
-    return new Node(
-      existingNode.value,
-      existingNode.left,
-      Insert(newNode, existingNode.right, existingNode),
-      existingNode.parent
-    );  
   } else {
     // If the value is equal, you can choose to ignore it or handle duplicates
     return existingNode;
