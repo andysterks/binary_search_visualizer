@@ -6,6 +6,7 @@ import { IsUnary } from "./IsUnary"
 
 export default function Insert(newNode, existingNode, existingParent) {
   if (!existingNode) {
+    newNode.parent = existingParent;
     return newNode;
   }
 
