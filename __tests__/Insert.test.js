@@ -44,6 +44,7 @@ describe('Simple Insert functions', () => {
     expect(root.value).toBe(2);
     root = Insert(3, root);
     expect(root.value).toBe(2);
+    expect(root.right.value).not.toBeNull();
     expect(root.right.value).toBe(3);
     expect(root.left).toBeNull();
     root = Insert(1, root);
@@ -55,7 +56,7 @@ describe('Simple Insert functions', () => {
     expect(root.right.value).toBe(3);
     expect(root.left.value).toBe(1);
     expect(root.right.right.value).toBe(4);
-    expect(root.left.value).toBeNull();
+    expect(root.right.left.value).toBeNull();
     root = Insert(5, root);
 
     expect(root.value).toBe(5);
