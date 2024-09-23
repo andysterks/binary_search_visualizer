@@ -17,7 +17,7 @@ export default function Insert(newNode, existingNode) {
       existingNode.parent
     );
   } else if (newNode.value > existingNode.value) {
-    if (IsLeaf(existingNode) && IsUnary(existingNode.parent)) {
+    if (IsLeaf(existingNode) && IsUnary(existingNode.parent) && !IsRoot(existingNode)) {
       // shift everything
       var left = new Node(existingNode.parent.value, null, null, existingNode);
       var right = new Node(newNode.value, null, null, existingNode);
